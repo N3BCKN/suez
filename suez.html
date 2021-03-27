@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Suez money goes brrrrr</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Suzel Channer">
+        <meta name="author" content="H3BCKN">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+        <audio src="https://mp3.fastupload.co/data/1616874631/suez.mp3"></audio>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>
+            
+
+            $(document).ready(function(){
+
+                
+                const hourLosses = 400000000;
+                const interval = 100 
+                const lossesFraction = hourLosses / (3600 * (1000 / interval))
+
+                var audio = document.createElement("AUDIO")
+                document.body.appendChild(audio);
+                audio.src = "https://mp3.fastupload.co/data/1616874631/suez.mp3"
+            
+                $('#counter').text(base_losses())
+                setInterval(function(){
+                    const current_losses = $('#counter').text() * 1;
+                    const losses = current_losses + lossesFraction
+                    $('#counter').text(losses.toFixed());
+                }, interval)
+
+                function base_losses(){
+                    const kekDate = new Date('23 Mar 2021 05:00:00 GMT').getTime()
+                    const currentDate = new Date().getTime()
+                    const lossesSoFar = ((currentDate - kekDate) / (3600 * 1000)) * hourLosses
+                    return lossesSoFar.toFixed()
+                }
+
+                $(document).mousemove(function(event){
+                    audio.play()
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="suez.jpg" width="100%" height="75%">
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center" style="padding-top: 25%;">
+                    <h2 class="font-weight-bold">losses of the world economy thanks to one brave boat so far:</h2>
+                </div>
+                <p class="text-center h1 pt-3 text-danger"><span id='counter'></span>$</p>
+                <img src="rage.jpg" width="60%" height="30%">
+            </div>
+        </div>
+    </body>
+</html>
